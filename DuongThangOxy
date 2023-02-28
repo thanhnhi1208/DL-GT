@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+
+struct DuongTron{
+	float x,y,r;
+};
+
+typedef struct DuongTron DT;
+
+void nhapDuongTron(DT &);
+void xuatDuongTron(DT);
+
+void nhapDuongTron(DT &dt){
+	printf("nhap diem x ");
+	scanf("%f",&dt.x);
+	printf("nhap diem y ");
+	scanf("%f",&dt.y);
+	do{
+		printf("nhap ban kinh r ");
+		scanf("%f",&dt.r);
+		if(dt.r<=0)
+			printf("\mnhap ban kinh r >0\m");
+	}while(dt.r <=0);
+}
+
+void xuatDuongTron(DT dt){
+	printf("(I (%.2f,%.2f)%.2f)",dt.x,dt.y,dt.r);
+}
+
+int main(){
+	DT dt;
+	nhapDuongTron(dt);
+	xuatDuongTron(dt);
+	getch();
+	return 0;
+}
