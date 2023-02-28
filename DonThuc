@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<conio.h>	
+
+struct DonThuc{
+	double a,n;
+}khanh;
+
+typedef struct DonThuc DONTHUC;
+void nhapDonThuc(DONTHUC &);
+void xuatDonThuc(DONTHUC);
+
+void nhapDonThuc(DONTHUC &dt){
+	printf("nhap a = ");
+	scanf("%lf",&dt.a);
+	printf("nhap n = ");
+	scanf("%lf",&dt.n);
+}
+
+void xuatDonThuc(DONTHUC dt){
+	printf("P(x)= %.2lfx^%.2lf",dt.a ,dt.n);
+}
+
+int main(){
+	nhapDonThuc(khanh);
+	xuatDonThuc(khanh);
+	getch();
+	return 0;
+}
