@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+struct Diem{
+	float x,y;
+};
+typedef struct Diem DIEM;
+void nhapDiem(DIEM &);
+void xuatDiem(DIEM );
+float tinhKhoangCach(DIEM,DIEM);
+struct tamgiac{
+	Diem A;
+	Diem B;
+	Diem C;	
+};
+typedef struct tamgiac TAMGIAC;
+void nhapTamGiac(TAMGIAC &);
+void xuatTamGiac(TAMGIAC );
+float tinhChuVi(TAMGIAC);
+float tinhDienTich(TAMGIAC);
+DIEM trongtam(TAMGIAC);
+ 
+void nhapDiem(DIEM &d){
+
+printf("nhap x");
+scanf("%f",&d.x);
+
+printf("nhap y");
+scanf("%f",&d.y);
+
+}
+void xuatDiem(DIEM d){
+
+printf("(%f,%f",d.x,d.y);
+}
+float tinhKhoangCach(DIEM d,DIEM n){
+	return sqrt(((d.x-n.x)*(d.x-n.x)))+(((d.y-n.y)*(d.y-n.y)));
+}
+
+void nhapTamGiac(TAMGIAC &tg){
+	printf("nhap toa do A:");
+	nhapDiem(tg.A);
+	
+	printf("nhap toa do B:");
+	nhapDiem(tg.B);
+	
+	printf("nhap toa do C");
+	nhapDiem(tg.C);
+}
+
+void xuatTamGiac(TAMGIAC tg){
+	printf(" /ntoa do A");
+	xuatDiem(tg.A);
+	
+	printf("\ntoa do B");
+	xuatDiem(tg.B);
+	
+	printf("\ntoa do C");
+	xuatDiem(tg.C);
+}
+
+float tinhChuVi(TAMGIAC tg){
+	float a=tinhKhoangCach(tg.B,tg.C);
+	float b=tinhKhoangCach(tg.C,tg.A);
+	float c=tinhKhoangCach(tg.A,tg.B);
+	
+	float ChuVi=(a+b+c);
+	return ChuVi;
+}
+float tinhDienTich(TAMGIAC tg){
+	float a=tinhKhoangCach(tg.B,tg.C);
+	float b=tinhKhoangCach(tg.C,tg.A);
+	float c=tinhKhoangCach(tg.A,tg.B);
+	float p=(a+b+c)/2;
+	float DienTich =sqrt((p*(p-a))*((p-b))*((p-c)));
+	return DienTich;
+}
+DIEM trongtam(TAMGIAC tg)
+{
+	DIEM G;
+	G.x=(tg.A.x+tg.B.x+tg.C.x)/3;
+	G.y=(tg.A.y+tg.B.y+tg.C.y)/3;
+	return G;
+}
+int main(){
+	DIEM G;
+    TAMGIAC tg;
+    nhapTamGiac(tg);
+    xuatTamGiac(tg);
+
+    float ChuVi = tinhChuVi(tg);
+    float DienTich = tinhDienTich(tg);
+    G = trongtam(tg);
+
+    printf("\nChu vi tam giac = %.3f", ChuVi);
+    printf("\nDien tich tam giac = %.3f", DienTich);
+
+    printf("\nToa do trong tam G cua tam giac la: (%8.3f, %8.3f)", G.x, G.y);
+
+    getch();
+    return 0;
+}
