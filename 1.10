@@ -1,0 +1,62 @@
+#include<stdio.h>
+#include<conio.h>
+struct Tam{
+	float x,y;
+};
+typedef struct Tam TAM;
+void nhapTam(TAM &);
+void xuatTam(TAM );
+
+struct DuongTron{
+int r;
+TAM I;
+};
+typedef struct DuongTron DUONGTRON;
+void nhapDuongTron(DUONGTRON &);
+void xuatDuongTron(DUONGTRON );
+float tinhChuVi(DUONGTRON );
+float tinhDienTich(DUONGTRON);
+
+void nhapTam(TAM &t){
+
+	printf("nhap x");
+	scanf("%f",&t.x);
+
+	printf("nhap y");
+	scanf("%f",&t.y);
+	
+}
+void xuatTam(TAM t){
+	printf("\nI=(%f,%f)",t.x,t.y);
+}
+
+void nhapDuongTron(DUONGTRON &dt){
+	printf("nhap tam");
+	nhapTam(dt.I);
+	printf("nhap ban kinh");
+	scanf("%d",&dt.r);
+	
+}
+void xuatDuongTron(DUONGTRON dt){
+	printf("\nI=(%f,%f)",dt.I.x,dt.I.y);
+	printf("\nr=%d",dt.r);
+}
+float tinhChuVi(DUONGTRON dt){
+	return 3.14*dt.r*dt.r;
+}
+float tinhDienTich(DUONGTRON dt){
+	return 3.14*2*dt.r;
+}
+
+int main(){
+	TAM r;
+	DUONGTRON dt;
+	nhapDuongTron(dt);
+	xuatDuongTron(dt);
+	float ChuVi=tinhChuVi(dt);
+	float DienTich=tinhDienTich(dt);
+	printf("\nchu vi:%.3f",ChuVi);
+	printf("\ndien tich:%.3f",DienTich);
+	getch();
+	return 0;
+}
