@@ -1,0 +1,91 @@
+#include<stdio.h>
+const int minYear=1800, maxYear = 10000;
+
+struct date{
+	int day,month,year;
+};
+typedef struct date NGAY;
+
+void nhapNGAY(NGAY &);
+void xuatNGAY(NGAY );
+int TimSoNgayTrongThang(NGAY n);
+void xuatNgay(NGAY n);
+
+
+int TimSoNgayTrongThang( NGAY n){
+	if(n.month ==1 || n.month ==3 || n.month ==5 || n.month ==7 || n.month ==8 || n.month ==10 || n.month ==12   ){
+		return 31;
+	}else if(n.month==4||n.month==6||n.month==9||n.month==11){
+		return 30;
+	}else {
+		if(n.year %400 ==0 || n.year %4==0 && n.year%100!=0){
+			return 29;
+		}else{
+			return 28;
+		}
+	}
+}									
+
+void nhapNGAY(NGAY &n){
+	
+	do{
+		printf("\nnhap thang ");
+		scanf("%d",&n.month);
+		if(n.month >12 || n.month <=0){
+			printf("\nnhap thang < 12 va >0");
+		}
+	}while(n.month >12 || n.month<=0);
+	
+	do{
+		printf("\nnhap nam");
+		scanf("%d",&n.year);
+		if(n.year<minYear||n.year>=maxYear)
+		printf("\nnhap nam >1800 va <10000");
+	}while (n.year<minYear||n.year>=maxYear);
+	
+	
+	do{
+		printf("\nnhap ngay	");
+		scanf("%d",&n.day );
+		if(n.day<1 || n.day >TimSoNgayTrongThang(n)){
+			printf("\n nhap ngay >1 va nho hon so ngay trong thang ");
+		}
+	}while(n.day > TimSoNgayTrongThang(n) || n.day<1 );
+}
+
+void xuatNgay(NGAY n){
+	printf("%d/%d/%d",n.day,n.month,n.year);
+}
+	
+struct HOPSUA{
+	char nhanHieu[20];
+	float TrongLuong;
+	NGAY HSD;	
+};
+typedef struct HOPSUA HS;
+void nhapHOPSUA(HS &);
+void xuatHOPSUA(HS );
+
+void nhapHOPSUA (HS &hs){
+	fflush(stdin);
+	printf("nhap nhan hieu : ");
+	gets(hs.nhanHieu);
+	
+	printf("nhap trong luong ");
+	scanf("%f",&hs.TrongLuong);
+	
+	printf("nhap HSD");
+	nhapNGAY(hs.HSD);
+}
+
+void xuatHOPSUA(HS hs){
+	printf("\nnhan hieu:%strong luong:%fg",hs.nhanHieu,hs.TrongLuong);
+	printf("\nHSD : ");
+	xuatNgay(hs.HSD);
+}
+
+int main(){
+	HS khanhyeunhi;
+	nhapHOPSUA(khanhyeunhi);
+	xuatHOPSUA(khanhyeunhi);
+}
