@@ -85,7 +85,7 @@ void xuatHOPSUA(HS hs){
 }
 
 int main(){
-	HS khanhyeunhi;
-	nhapHOPSUA(khanhyeunhi);
-	xuatHOPSUA(khanhyeunhi);
+	HS b;
+	nhapHOPSUA(b);
+	xuatHOPSUA(b);
 }
