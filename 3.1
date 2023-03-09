@@ -1,0 +1,44 @@
+#include<stdio.h>
+int a[100],n;
+void nhapmang(int a[],int &n){
+	do{
+		printf ("nhap mang 0<n>100");
+		scanf("%d",&n);
+	}while (n<1||n>100);
+	//do while nhap n, for nhap a[i]
+	for (int i=0;i<n;i++){
+		printf("a[%d]=",i);
+		scanf("%d",&a[i]);
+}
+}
+void xuatmang(int a[],int n){
+	printf("\tmang vua nhap:	");
+	for(int i=0;i<n;i++){
+		printf("\t%d",a[i]);
+	}
+}
+void tangdan(int a[],int &n){
+	for(int i=0;i<n;i++){
+		for(int j=i+1;j<n;j++){
+			if(a[i]>a[j]){
+				int tam=a[i];
+				a[i]=a[j];
+				a[j]=tam;
+			
+			}
+		}
+	}
+}
+void xuattangdan(int a[],int n){
+	for(int i=0;i<n;i++){
+		printf("\t%d",a[i]);
+	}
+}
+int main(){
+	int n,a[100];
+	nhapmang(a,n);
+	xuatmang(a,n);
+	tangdan(a,n);
+	printf("\n\ttang dan:");
+	xuattangdan(a,n);
+}
