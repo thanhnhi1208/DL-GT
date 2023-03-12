@@ -1,0 +1,15 @@
+#include<stdio.h>
+int Tich(int n){
+	if(n==0)
+	return 1;
+	return Tich(n-1)*n;
+}
+int main (){
+	int n;
+	int T;
+	printf("nhap n=		");
+	scanf("%d",&n);
+	T=Tich(n);
+	printf("T=%d",T);
+	return 0;
+}
